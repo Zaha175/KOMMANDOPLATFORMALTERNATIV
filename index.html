@@ -257,6 +257,12 @@
       background: linear-gradient(135deg, #005500, #4CAF50);
     }
     
+    /* Speziell für die Alterungsprozesse-Karte - blau */
+    .alterungsprozesse {
+      background: linear-gradient(135deg, #003366, #0066cc);
+      border: 2px solid #ffdd00 !important;
+    }
+    
     body.dark-mode .figurentest,
     body.dark-mode .farbentest,
     body.dark-mode .verkehrstest,
@@ -265,6 +271,11 @@
     body.dark-mode .reaktion,
     body.dark-mode .game {
       filter: brightness(0.8);
+    }
+    
+    body.dark-mode .alterungsprozesse {
+      background: linear-gradient(135deg, #00264d, #004d99);
+      border: 2px solid #aa9900 !important;
     }
   </style>
   <!-- Google Analytics (Placeholder) -->
@@ -385,8 +396,8 @@
           116: "DOOM 2",
           
           // MPU
-          2: "PLATFORM ROM PRO",
-          3: "PLATFORM PRO",
+          2: "MPU PLATFORM ROM PRO",
+          3: "MPU PLATFORM PRO",
           4: "MPU APP MINCU",
           5: "MPU APP STEFAN",
           6: "MPU APP PETRU",
@@ -394,30 +405,35 @@
           8: "MPU APP FLORIN",
           9: "MPU APP GHEORGHE",
           10: "MPU APP LIVIU",
-          11: "URSACHEN APP ROM",
-          12: "URSACHEN APP DE",
-          13: "PLATFORM PETRU PRO",
-          14: "URSACHEN APP BERATER",
-          17: "PLATFORM MINCU PRO",
-          19: "PLATFORM COSTINEL PRO",
-          20: "PLATFORM ULTRA",
-          22: "PLATFORM ROM ULTRA",
-          23: "PLATFORM PETRU ULTRA",
-          25: "PLATFORM MINCU ULTRA",
-          26: "PLATFORM COSTINEL ULTRA",
-          27: "PLATFORM FLORIN ULTRA",
-          29: "PLATFORM ADI ULTRA",
+          11: "MPU URSACHEN APP ROM",
+          12: "MPU URSACHEN APP DE",
+          13: "MPU PLATFORM PETRU PRO",
+          14: "MPU URSACHEN APP BERATER",
+          17: "MPU PLATFORM MINCU PRO",
+          19: "MPU PLATFORM COSTINEL PRO",
+          20: "MPU PLATFORM ULTRA",
+          22: "MPU PLATFORM ROM ULTRA",
+          23: "MPU PLATFORM PETRU ULTRA",
+          25: "MPU PLATFORM MINCU ULTRA",
+          26: "MPU PLATFORM COSTINEL ULTRA",
+          27: "MPU PLATFORM FLORIN ULTRA",
+          29: "MPU PLATFORM ADI ULTRA",
           30: "MPU APP ADI",
-          34: "PLATFORM JURI ULTRA",
+          34: "MPU PLATFORM JURI ULTRA",
           37: "MPU APP GHID",
           38: "MPU APP PETRU II",
-          46: "PLATFORM PRO I",
+          46: "MPU PLATFORM PRO I",
+          55: "MPU APP ZEITSPRUNG DEU",
+          56: "MPU APP ZEITSPRUNG ROM",
+          57: "MPU PLATFORM ULTRA I",
+          58: "MPU PLATFORM LEANDER ULTRA",
           
           // Aging
           18: "ALTERSTOPP PLATFORM PRO",
           21: "ALTERSTOPP PLATFORM ULTRA",
           24: "ALTERSTOPP PLATFORM ULTRA1",
           47: "ALTERSTOPP PLATFORM ULTRA2",
+          48: "PLATTFORM FÜR ALTERUNGSPROZESSE",
           
           // Westworld
           32: "WESTWORLD PETRU APP",
@@ -504,8 +520,8 @@
           116: "DOOM 2",
           
           // MPU
-          2: "PLATFORM ROM PRO",
-          3: "PLATFORM PRO",
+          2: "MPU PLATFORM ROM PRO",
+          3: "MPU PLATFORM PRO",
           4: "MPU APP MINCU",
           5: "MPU APP STEFAN",
           6: "MPU APP PETRU",
@@ -513,30 +529,35 @@
           8: "MPU APP FLORIN",
           9: "MPU APP GHEORGHE",
           10: "MPU APP LIVIU",
-          11: "CAUSES APP ROM",
-          12: "CAUSES APP DE",
-          13: "PLATFORM PETRU PRO",
-          14: "CAUSES APP ADVISOR",
-          17: "PLATFORM MINCU PRO",
-          19: "PLATFORM COSTINEL PRO",
-          20: "PLATFORM ULTRA",
-          22: "PLATFORM ROM ULTRA",
-          23: "PLATFORM PETRU ULTRA",
-          25: "PLATFORM MINCU ULTRA",
-          26: "PLATFORM COSTINEL ULTRA",
-          27: "PLATFORM FLORIN ULTRA",
-          29: "PLATFORM ADI ULTRA",
+          11: "MPU CAUSES APP ROM",
+          12: "MPU CAUSES APP DE",
+          13: "MPU PLATFORM PETRU PRO",
+          14: "MPU CAUSES APP ADVISOR",
+          17: "MPU PLATFORM MINCU PRO",
+          19: "MPU PLATFORM COSTINEL PRO",
+          20: "MPU PLATFORM ULTRA",
+          22: "MPU PLATFORM ROM ULTRA",
+          23: "MPU PLATFORM PETRU ULTRA",
+          25: "MPU PLATFORM MINCU ULTRA",
+          26: "MPU PLATFORM COSTINEL ULTRA",
+          27: "MPU PLATFORM FLORIN ULTRA",
+          29: "MPU PLATFORM ADI ULTRA",
           30: "MPU APP ADI",
-          34: "PLATFORM JURI ULTRA",
+          34: "MPU PLATFORM JURI ULTRA",
           37: "MPU APP GUIDE",
           38: "MPU APP PETRU II",
-          46: "PLATFORM PRO I",
+          46: "MPU PLATFORM PRO I",
+          55: "MPU APP ZEITSPRUNG DEU",
+          56: "MPU APP ZEITSPRUNG ROM",
+          57: "MPU PLATFORM ULTRA I",
+          58: "MPU PLATFORM LEANDER ULTRA",
           
           // Aging
           18: "AGING STOP PLATFORM PRO",
           21: "AGING STOP PLATFORM ULTRA",
           24: "AGING STOP PLATFORM ULTRA1",
           47: "AGING STOP PLATFORM ULTRA2",
+          48: "PLATFORM FOR AGING PROCESSES",
           
           // Westworld
           32: "WESTWORLD PETRU APP",
@@ -623,39 +644,44 @@
           116: "DOOM 2",
           
           // MPU
-          2: "PLATFORMĂ ROM PRO",
-          3: "PLATFORMĂ PRO",
-          4: "APLICAȚIE MPU MINCU",
-          5: "APLICAȚIE MPU STEFAN",
-          6: "APLICAȚIE MPU PETRU",
-          7: "APLICAȚIE MPU COSTINEL",
-          8: "APLICAȚIE MPU FLORIN",
-          9: "APLICAȚIE MPU GHEORGHE",
-          10: "APLICAȚIE MPU LIVIU",
-          11: "APLICAȚIE CAUZE ROM",
-          12: "APLICAȚIE CAUZE DE",
-          13: "PLATFORMĂ PETRU PRO",
-          14: "APLICAȚIE CONSILIER CAUZE",
-          17: "PLATFORMĂ MINCU PRO",
-          19: "PLATFORMĂ COSTINEL PRO",
-          20: "PLATFORMĂ ULTRA",
-          22: "PLATFORMĂ ROM ULTRA",
-          23: "PLATFORMĂ PETRU ULTRA",
-          25: "PLATFORMĂ MINCU ULTRA",
-          26: "PLATFORMĂ COSTINEL ULTRA",
-          27: "PLATFORMĂ FLORIN ULTRA",
-          29: "PLATFORMĂ ADI ULTRA",
-          30: "APLICAȚIE MPU ADI",
-          34: "PLATFORMĂ JURI ULTRA",
-          37: "APLICAȚIE GHID MPU",
-          38: "APLICAȚIE MPU PETRU II",
-          46: "PLATFORMĂ PRO I",
+          2: "MPU PLATFORMĂ ROM PRO",
+          3: "MPU PLATFORMĂ PRO",
+          4: "MPU APLICAȚIE MINCU",
+          5: "MPU APLICAȚIE STEFAN",
+          6: "MPU APLICAȚIE PETRU",
+          7: "MPU APLICAȚIE COSTINEL",
+          8: "MPU APLICAȚIE FLORIN",
+          9: "MPU APLICAȚIE GHEORGHE",
+          10: "MPU APLICAȚIE LIVIU",
+          11: "MPU APLICAȚIE CAUZE ROM",
+          12: "MPU APLICAȚIE CAUZE DE",
+          13: "MPU PLATFORMĂ PETRU PRO",
+          14: "MPU APLICAȚIE CONSILIER CAUZE",
+          17: "MPU PLATFORMĂ MINCU PRO",
+          19: "MPU PLATFORMĂ COSTINEL PRO",
+          20: "MPU PLATFORMĂ ULTRA",
+          22: "MPU PLATFORMĂ ROM ULTRA",
+          23: "MPU PLATFORMĂ PETRU ULTRA",
+          25: "MPU PLATFORMĂ MINCU ULTRA",
+          26: "MPU PLATFORMĂ COSTINEL ULTRA",
+          27: "MPU PLATFORMĂ FLORIN ULTRA",
+          29: "MPU PLATFORMĂ ADI ULTRA",
+          30: "MPU APLICAȚIE ADI",
+          34: "MPU PLATFORMĂ JURI ULTRA",
+          37: "MPU APLICAȚIE GHID",
+          38: "MPU APLICAȚIE PETRU II",
+          46: "MPU PLATFORMĂ PRO I",
+          55: "MPU APLICAȚIE ZEITSPRUNG DEU",
+          56: "MPU APLICAȚIE ZEITSPRUNG ROM",
+          57: "MPU PLATFORMĂ ULTRA I",
+          58: "MPU PLATFORMĂ LEANDER ULTRA",
           
           // Aging
           18: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE PRO",
           21: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE ULTRA",
           24: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE ULTRA1",
           47: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE ULTRA2",
+          48: "PLATFORMĂ PENTRU PROCESE DE ÎMBĂTRÂNIRE",
           
           // Westworld
           32: "APLICAȚIE WESTWORLD PETRU",
@@ -1009,67 +1035,73 @@
       mpu: [
         {
           id: 22,
-          title: "PLATFORM ROM ULTRA",
+          title: "MPU PLATFORM ROM ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMROMULTRA/"
         },
         {
           id: 2,
-          title: "PLATFORM ROM PRO",
+          title: "MPU PLATFORM ROM PRO",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
           link: "https://zaha175.github.io/MPUPLATFORMROM/"
         },
         {
-          id: 45,
-          title: "PLATFORM ULTRA I",
+          id: 57,
+          title: "MPU PLATFORM ULTRA I",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMULTRA1/"
         },
         {
           id: 20,
-          title: "PLATFORM ULTRA",
+          title: "MPU PLATFORM ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMULTRA/"
         },
         {
-          id: 43,
-          title: "PLATFORM LEANDER ULTRA",
+          id: 58,
+          title: "MPU PLATFORM LEANDER ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMLEANDER/"
         },
         {
           id: 34,
-          title: "PLATFORM JURI ULTRA",
+          title: "MPU PLATFORM JURI ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMJURIULTRA/"
         },
         {
           id: 46,
-          title: "PLATFORM PRO I",
+          title: "MPU PLATFORM PRO I",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
           link: "https://zaha175.github.io/MPUPLATFORMDE1/"
         },
         {
           id: 3,
-          title: "PLATFORM PRO",
+          title: "MPU PLATFORM PRO",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
           link: "https://zaha175.github.io/MPUPLATFORMDE/"
         },
         {
-          id: 42,
+          id: 55,
           title: "MPU APP ZEITSPRUNG DEU",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
           link: "https://zaha175.github.io/ZEITSPRUNGABSTINENZ/"
         },
         {
+          id: 56,
+          title: "MPU APP ZEITSPRUNG ROM",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
+          link: "https://zaha175.github.io/ZEITSPRUNGPETER/"
+        },
+        {
           id: 25,
-          title: "PLATFORM MINCU ULTRA",
+          title: "MPU PLATFORM MINCU ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMMINCUULTRA/"
         },
         {
           id: 17,
-          title: "PLATFORM MINCU PRO",
+          title: "MPU PLATFORM MINCU PRO",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
           link: "https://zaha175.github.io/MPUPLATFORMMINCUPRO/"
         },
@@ -1087,13 +1119,13 @@
         },
         {
           id: 23,
-          title: "PLATFORM PETRU ULTRA",
+          title: "MPU PLATFORM PETRU ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMPETULTRA/"
         },
         {
           id: 13,
-          title: "PLATFORM PETRU PRO",
+          title: "MPU PLATFORM PETRU PRO",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
           link: "https://zaha175.github.io/MPUPLATFORMPETRUPRO/"
         },
@@ -1116,20 +1148,14 @@
           link: "https://zaha175.github.io/MPUAPPPETRUNEU1/"
         },
         {
-          id: 41,
-          title: "MPU APP ZEITSPRUNG ROM",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/ZEITSPRUNGPETER/"
-        },
-        {
           id: 26,
-          title: "PLATFORM COSTINEL ULTRA",
+          title: "MPU PLATFORM COSTINEL ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMCOSTINELULTRA/"
         },
         {
           id: 19,
-          title: "PLATFORM COSTINEL PRO",
+          title: "MPU PLATFORM COSTINEL PRO",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
           link: "https://zaha175.github.io/MPUPLATFORMCOSTINELPRO/"
         },
@@ -1141,7 +1167,7 @@
         },
         {
           id: 27,
-          title: "PLATFORM FLORIN ULTRA",
+          title: "MPU PLATFORM FLORIN ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
           link: "https://zaha175.github.io/MPUPLATFORMFLORINULTRA/"
         },
@@ -1165,25 +1191,25 @@
         },
         {
           id: 11,
-          title: "URSACHEN APP ROM",
+          title: "MPU URSACHEN APP ROM",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png",
           link: "https://zaha175.github.io/URSACHENAPPROM/"
         },
         {
           id: 12,
-          title: "URSACHEN APP DE",
+          title: "MPU URSACHEN APP DE",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png",
           link: "https://zaha175.github.io/URSACHENAPPDE/"
         },
         {
           id: 14,
-          title: "URSACHEN APP BERATER",
+          title: "MPU URSACHEN APP BERATER",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png",
           link: "https://chatgpt.com/g/g-6798a9be662881919f402347f8a5da5e-ursachen-berater"
         },
         {
           id: 29,
-          title: "PLATFORM ADI ULTRA",
+          title: "MPU PLATFORM ADI ULTRA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
           link: "https://zaha175.github.io/MPUPLATFROMADIULTRA/"
         },
@@ -1195,6 +1221,13 @@
         }
       ],
       aging: [
+        {
+          id: 48,
+          title: "PLATTFORM FÜR ALTERUNGSPROZESSE",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png",
+          link: "https://zaha175.github.io/PlattformAlterungsprozesse/",
+          cssClass: "alterungsprozesse"
+        },
         {
           id: 47,
           title: "ALTERSTOPP PLATFORM ULTRA2",
