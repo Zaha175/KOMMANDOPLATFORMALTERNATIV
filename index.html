@@ -263,6 +263,12 @@
       border: 2px solid #ffdd00 !important;
     }
     
+    /* Speziell für die Simulation-Karte */
+    .simulation {
+      background: linear-gradient(135deg, #330066, #6600cc);
+      border: 2px solid #00ffff !important;
+    }
+    
     body.dark-mode .figurentest,
     body.dark-mode .farbentest,
     body.dark-mode .verkehrstest,
@@ -276,6 +282,11 @@
     body.dark-mode .alterungsprozesse {
       background: linear-gradient(135deg, #00264d, #004d99);
       border: 2px solid #aa9900 !important;
+    }
+    
+    body.dark-mode .simulation {
+      background: linear-gradient(135deg, #220044, #440088);
+      border: 2px solid #00cccc !important;
     }
   </style>
   <!-- Google Analytics (Placeholder) -->
@@ -304,6 +315,7 @@
     <button id="aging-tab" class="tab-btn" onclick="switchTab('aging')">ALTERUNGSSTOPP</button>
     <button id="westworld-tab" class="tab-btn" onclick="switchTab('westworld')">WESTWORLD</button>
     <button id="trading-tab" class="tab-btn" onclick="switchTab('trading')">TRADING</button>
+    <button id="simulation-tab" class="tab-btn" onclick="switchTab('simulation')">SIMULATION</button>
   </nav>
   
   <input type="text" id="search-input" placeholder="Suche..." class="mode-toggle">
@@ -319,6 +331,7 @@
     <div id="aging-gallery" class="gallery"></div>
     <div id="westworld-gallery" class="gallery"></div>
     <div id="trading-gallery" class="gallery"></div>
+    <div id="simulation-gallery" class="gallery"></div>
   </div>
 
   <script>
@@ -331,6 +344,7 @@
         aging: "ALTERUNGSSTOPP",
         westworld: "WESTWORLD",
         trading: "TRADING",
+        simulation: "SIMULATION",
         search: "Suche...",
         platforms: {
           // Command
@@ -444,7 +458,10 @@
 
           // Trading
           200: "DAX VOLA",
-          201: "DOW JONES VOLA"
+          201: "DOW JONES VOLA",
+          
+          // Simulation
+          202: "SIMULATION PLATTFORM ULTRA"
         }
       },
       en: {
@@ -455,6 +472,7 @@
         aging: "AGING STOP",
         westworld: "WESTWORLD",
         trading: "TRADING",
+        simulation: "SIMULATION",
         search: "Search...",
         platforms: {
           // Command
@@ -568,7 +586,10 @@
           
           // Trading
           200: "DAX VOLATILITY",
-          201: "DOW JONES VOLATILITY"
+          201: "DOW JONES VOLATILITY",
+          
+          // Simulation
+          202: "SIMULATION PLATFORM ULTRA"
         }
       },
       ro: {
@@ -579,6 +600,7 @@
         aging: "OPRIRE ÎMBĂTRÂNIRE",
         westworld: "WESTWORLD",
         trading: "TRADING",
+        simulation: "SIMULARE",
         search: "Căutare...",
         platforms: {
           // Command
@@ -692,7 +714,10 @@
           
           // Trading
           200: "DAX VOLATILITATE",
-          201: "DOW JONES VOLATILITATE"
+          201: "DOW JONES VOLATILITATE",
+          
+          // Simulation
+          202: "PLATFORMĂ SIMULARE ULTRA"
         }
       }
     };
@@ -1298,6 +1323,15 @@
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
           link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN1/"
         }
+      ],
+      simulation: [
+        {
+          id: 202,
+          title: "SIMULATION PLATTFORM ULTRA",
+          img: "https://i.imgur.com/cVNquR7.jpeg",
+          link: "https://zaha175.github.io/PLATFORMCODEULTRA/",
+          cssClass: "simulation"
+        }
       ]
     };
 
@@ -1338,6 +1372,7 @@
       document.getElementById("aging-tab").textContent = translations[lang].aging;
       document.getElementById("westworld-tab").textContent = translations[lang].westworld;
       document.getElementById("trading-tab").textContent = translations[lang].trading;
+      document.getElementById("simulation-tab").textContent = translations[lang].simulation;
       updateSearchPlaceholder(lang);
       updateCards(lang);
     }
@@ -1350,7 +1385,7 @@
     }
 
     function updateCards(lang) {
-      ["command", "games", "mpu", "aging", "westworld", "trading"].forEach(tab => renderCards(tab, lang));
+      ["command", "games", "mpu", "aging", "westworld", "trading", "simulation"].forEach(tab => renderCards(tab, lang));
     }
 
     function toggleDarkMode() {
