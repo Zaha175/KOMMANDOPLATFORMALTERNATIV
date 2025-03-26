@@ -201,18 +201,63 @@
     }
     #ad-banner {
       text-align: center;
-      padding: 10px;
-      background-color: rgba(0, 51, 102, 0.7);
+      padding: 15px;
+      background-color: rgba(0, 51, 102, 0.8);
       color: #ffd700;
       margin: 10px auto;
       max-width: 1400px;
       border-radius: 5px;
       border: 1px solid #ffd700;
+      font-size: 1.5rem;
+      font-weight: bold;
+      min-height: 1.5em;
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 3s infinite ease-in-out;
+      letter-spacing: 1px;
     }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px 0px rgba(255, 215, 0, 0.5); }
+      50% { box-shadow: 0 0 20px 5px rgba(255, 215, 0, 0.7); }
+      100% { box-shadow: 0 0 10px 0px rgba(255, 215, 0, 0.5); }
+    }
+    
+    #ad-banner .banner-text {
+      animation: textGlow 2s ease-in-out infinite alternate;
+    }
+    
+    @keyframes textGlow {
+      from {
+        text-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700;
+      }
+      to {
+        text-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ff9900;
+      }
+    }
+    
     body.dark-mode #ad-banner {
-      background-color: rgba(68, 68, 68, 0.7);
+      background-color: rgba(68, 68, 68, 0.8);
       border-color: #777;
+      animation: pulseDark 3s infinite ease-in-out;
     }
+    
+    @keyframes pulseDark {
+      0% { box-shadow: 0 0 10px 0px rgba(119, 119, 119, 0.5); }
+      50% { box-shadow: 0 0 20px 5px rgba(119, 119, 119, 0.7); }
+      100% { box-shadow: 0 0 10px 0px rgba(119, 119, 119, 0.5); }
+    }
+    
+    /* Pause animation on hover */
+    #ad-banner:hover {
+      animation-play-state: paused;
+    }
+    
+    #ad-banner:hover .banner-text {
+      animation-play-state: paused;
+    }
+    
     @media (max-width: 600px) {
       .gallery {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -231,6 +276,10 @@
       header {
         font-size: 1.3rem;
         padding: 15px 10px;
+      }
+      #ad-banner {
+        font-size: 1rem;
+        padding: 10px;
       }
     }
     
@@ -269,6 +318,18 @@
       border: 2px solid #00ffff !important;
     }
     
+    /* Speziell für die Trading-Karte */
+    .trading {
+      background: linear-gradient(135deg, #003300, #006600);
+      border: 2px solid #00ff00 !important;
+    }
+    
+    /* Speziell für die Westworld-Karte */
+    .westworld {
+      background: linear-gradient(135deg, #660000, #990000);
+      border: 2px solid #ff6666 !important;
+    }
+    
     body.dark-mode .figurentest,
     body.dark-mode .farbentest,
     body.dark-mode .verkehrstest,
@@ -288,15 +349,17 @@
       background: linear-gradient(135deg, #220044, #440088);
       border: 2px solid #00cccc !important;
     }
+    
+    body.dark-mode .trading {
+      background: linear-gradient(135deg, #002200, #004400);
+      border: 2px solid #00cc00 !important;
+    }
+    
+    body.dark-mode .westworld {
+      background: linear-gradient(135deg, #440000, #660000);
+      border: 2px solid #cc3333 !important;
+    }
   </style>
-  <!-- Google Analytics (Placeholder) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXX-Y"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXX-Y');
-  </script>
 </head>
 <body>
   <header>
@@ -321,7 +384,7 @@
   <input type="text" id="search-input" placeholder="Suche..." class="mode-toggle">
   
   <div id="ad-banner">
-    [Platz für Werbung oder Ankündigungen]
+    <span id="banner-text" class="banner-text">🚀 WILLKOMMEN IN DER KOMMANDO-ZENTRALE!</span>
   </div>
   
   <div class="gallery-container">
@@ -346,6 +409,13 @@
         trading: "TRADING",
         simulation: "SIMULATION",
         search: "Suche...",
+        adMessages: [
+          "🚀 WILLKOMMEN IN DER KOMMANDO-ZENTRALE!",
+          "🎮 NEUE REAKTIONSTESTS UND SPIELE VERFÜGBAR!",
+          "⏳ ALTERUNGSSTOPP: ENTDECKE ANTI-AGING TECHNOLOGIEN!",
+          "🔮 SIMULATION: KERR-SCHWARZE LÖCHER UND QUANTENPHYSIK!",
+          "💹 TRADING: VOLATILITÄTSANALYSEN IN ECHTZEIT!"
+        ],
         platforms: {
           // Command
           15: "COMMAND BERATER APP",
@@ -455,13 +525,26 @@
           35: "WESTWORLD MARCO APP",
           36: "WESTWORLD JACOB MATHE APP",
           39: "WESTWORLD STEFAN MATHE APP",
+          300: "WESTWORLD PHYSIK SIMULATOR",
+          301: "WESTWORLD CHEMIE LABOR",
+          302: "WESTWORLD BIOLOGIE KIT",
+          303: "WESTWORLD ASTRONOMIE",
+          304: "WESTWORLD QUANTENPHYSIK",
 
           // Trading
           200: "DAX VOLA",
           201: "DOW JONES VOLA",
+          210: "KRYPTO TRACKER",
+          211: "FOREX HANDEL PRO",
+          212: "AKTIEN PORTFOLIO MANAGER",
+          213: "TRADING CHART ANALYZER",
           
           // Simulation
-          202: "SIMULATION PLATTFORM ULTRA"
+          202: "SIMULATION PLATTFORM ULTRA",
+          203: "KERR-CODE SIMULATOR",
+          204: "QUANTENSIMULATION",
+          205: "REALITÄTSKNOTEN EXPLORER",
+          206: "5D GATEWAY ZUGANG"
         }
       },
       en: {
@@ -474,6 +557,13 @@
         trading: "TRADING",
         simulation: "SIMULATION",
         search: "Search...",
+        adMessages: [
+          "🚀 WELCOME TO THE COMMAND CENTER!",
+          "🎮 NEW REACTION TESTS AND GAMES AVAILABLE!",
+          "⏳ AGING STOP: DISCOVER ANTI-AGING TECHNOLOGIES!",
+          "🔮 SIMULATION: KERR BLACK HOLES AND QUANTUM PHYSICS!",
+          "💹 TRADING: REAL-TIME VOLATILITY ANALYSIS!"
+        ],
         platforms: {
           // Command
           15: "COMMAND ADVISOR APP",
@@ -583,13 +673,26 @@
           35: "WESTWORLD MARCO APP",
           36: "WESTWORLD JACOB MATH APP",
           39: "WESTWORLD STEFAN MATH APP",
+          300: "WESTWORLD PHYSICS SIMULATOR",
+          301: "WESTWORLD CHEMISTRY LAB",
+          302: "WESTWORLD BIOLOGY KIT",
+          303: "WESTWORLD ASTRONOMY",
+          304: "WESTWORLD QUANTUM PHYSICS",
           
           // Trading
           200: "DAX VOLATILITY",
           201: "DOW JONES VOLATILITY",
+          210: "CRYPTO TRACKER",
+          211: "FOREX TRADING PRO",
+          212: "STOCK PORTFOLIO MANAGER",
+          213: "TRADING CHART ANALYZER",
           
           // Simulation
-          202: "SIMULATION PLATFORM ULTRA"
+          202: "SIMULATION PLATFORM ULTRA",
+          203: "KERR-CODE SIMULATOR",
+          204: "QUANTUM SIMULATION",
+          205: "REALITY NODES EXPLORER",
+          206: "5D GATEWAY ACCESS"
         }
       },
       ro: {
@@ -602,6 +705,13 @@
         trading: "TRADING",
         simulation: "SIMULARE",
         search: "Căutare...",
+        adMessages: [
+          "🚀 BINE AȚI VENIT LA CENTRUL DE COMANDĂ!",
+          "🎮 TESTE NOI DE REACȚIE ȘI JOCURI DISPONIBILE ACUM!",
+          "⏳ OPRIRE ÎMBĂTRÂNIRE: DESCOPERĂ TEHNOLOGII ANTI-ÎMBĂTRÂNIRE!",
+          "🔮 SIMULARE: GĂURI NEGRE KERR ȘI FIZICĂ CUANTICĂ!",
+          "💹 TRADING: ANALIZĂ DE VOLATILITATE ÎN TIMP REAL!"
+        ],
         platforms: {
           // Command
           15: "APLICAȚIE CONSILIER COMANDĂ",
@@ -711,13 +821,26 @@
           35: "APLICAȚIE WESTWORLD MARCO",
           36: "APLICAȚIE WESTWORLD JACOB MATEMATICĂ",
           39: "APLICAȚIE WESTWORLD STEFAN MATEMATICĂ",
+          300: "SIMULATOR FIZICĂ WESTWORLD",
+          301: "LABORATOR CHIMIE WESTWORLD",
+          302: "KIT BIOLOGIE WESTWORLD",
+          303: "ASTRONOMIE WESTWORLD",
+          304: "FIZICĂ CUANTICĂ WESTWORLD",
           
           // Trading
           200: "DAX VOLATILITATE",
           201: "DOW JONES VOLATILITATE",
+          210: "URMĂRITOR CRYPTO",
+          211: "FOREX TRADING PRO",
+          212: "MANAGER PORTOFOLIU ACȚIUNI",
+          213: "ANALIZOR GRAFICE TRADING",
           
           // Simulation
-          202: "PLATFORMĂ SIMULARE ULTRA"
+          202: "PLATFORMĂ SIMULARE ULTRA",
+          203: "SIMULATOR KERR-CODE",
+          204: "SIMULARE CUANTICĂ",
+          205: "EXPLORATOR NODURI REALITATE",
+          206: "ACCES GATEWAY 5D"
         }
       }
     };
@@ -1283,13 +1406,43 @@
           id: 200,
           title: "DAX VOLA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/4c9e5c9e8dad48a7b41f44f6982ffb75/original/Screenshot-2025-01-03-213036.jpg",
-          link: "#"
+          link: "#",
+          cssClass: "trading"
         },
         {
           id: 201,
           title: "DOW JONES VOLA",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
-          link: "#"
+          link: "#",
+          cssClass: "trading"
+        },
+        {
+          id: 210,
+          title: "KRYPTO TRACKER",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
+          link: "#",
+          cssClass: "trading"
+        },
+        {
+          id: 211,
+          title: "FOREX HANDEL PRO",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
+          link: "#",
+          cssClass: "trading"
+        },
+        {
+          id: 212,
+          title: "AKTIEN PORTFOLIO MANAGER",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
+          link: "#",
+          cssClass: "trading"
+        },
+        {
+          id: 213,
+          title: "TRADING CHART ANALYZER",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
+          link: "#",
+          cssClass: "trading"
         }
       ],
       westworld: [
@@ -1297,31 +1450,71 @@
           id: 32,
           title: "WESTWORLD PETRU APP",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/WESTWORLDPETRUAPP/"
+          link: "https://zaha175.github.io/WESTWORLDPETRUAPP/",
+          cssClass: "westworld"
         },
         {
           id: 33,
           title: "WESTWORLD ADI APP",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/WESTWORLDADIAPP/"
+          link: "https://zaha175.github.io/WESTWORLDADIAPP/",
+          cssClass: "westworld"
         },
         {
           id: 35,
           title: "WESTWORLD MARCO APP",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/PHYSIKMARCOPLATFORM/"
+          link: "https://zaha175.github.io/PHYSIKMARCOPLATFORM/",
+          cssClass: "westworld"
         },
         {
           id: 36,
           title: "WESTWORLD JACOB MATHE APP",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN/"
+          link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN/",
+          cssClass: "westworld"
         },
         {
           id: 39,
           title: "WESTWORLD STEFAN MATHE APP",
           img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN1/"
+          link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN1/",
+          cssClass: "westworld"
+        },
+        {
+          id: 300,
+          title: "WESTWORLD PHYSIK SIMULATOR",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
+          link: "#",
+          cssClass: "westworld"
+        },
+        {
+          id: 301,
+          title: "WESTWORLD CHEMIE LABOR",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
+          link: "#",
+          cssClass: "westworld"
+        },
+        {
+          id: 302,
+          title: "WESTWORLD BIOLOGIE KIT",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
+          link: "#",
+          cssClass: "westworld"
+        },
+        {
+          id: 303,
+          title: "WESTWORLD ASTRONOMIE",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
+          link: "#",
+          cssClass: "westworld"
+        },
+        {
+          id: 304,
+          title: "WESTWORLD QUANTENPHYSIK",
+          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
+          link: "#",
+          cssClass: "westworld"
         }
       ],
       simulation: [
@@ -1331,9 +1524,53 @@
           img: "https://i.imgur.com/cVNquR7.jpeg",
           link: "https://zaha175.github.io/PLATFORMCODEULTRA/",
           cssClass: "simulation"
+        },
+        {
+          id: 203,
+          title: "KERR-CODE SIMULATOR",
+          img: "https://i.imgur.com/cVNquR7.jpeg",
+          link: "#",
+          cssClass: "simulation"
+        },
+        {
+          id: 204,
+          title: "QUANTENSIMULATION",
+          img: "https://i.imgur.com/cVNquR7.jpeg",
+          link: "#",
+          cssClass: "simulation"
+        },
+        {
+          id: 205,
+          title: "REALITÄTSKNOTEN EXPLORER",
+          img: "https://i.imgur.com/cVNquR7.jpeg",
+          link: "#",
+          cssClass: "simulation"
+        },
+        {
+          id: 206,
+          title: "5D GATEWAY ZUGANG",
+          img: "https://i.imgur.com/cVNquR7.jpeg",
+          link: "#",
+          cssClass: "simulation"
         }
       ]
     };
+
+    // Funktion zum Wechseln der Bannernachrichten
+    function cycleBannerMessages() {
+      const bannerText = document.getElementById("banner-text");
+      const lang = document.querySelector("#language-select").value;
+      let currentIndex = 0;
+      
+      // Starttext setzen
+      bannerText.textContent = translations[lang].adMessages[0];
+      
+      // Timer für Nachrichtenwechsel
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % translations[lang].adMessages.length;
+        bannerText.textContent = translations[lang].adMessages[currentIndex];
+      }, 5000); // Wechsel alle 5 Sekunden
+    }
 
     function renderCards(tab, lang = "de") {
       const gallery = document.getElementById(`${tab}-gallery`);
@@ -1373,7 +1610,11 @@
       document.getElementById("westworld-tab").textContent = translations[lang].westworld;
       document.getElementById("trading-tab").textContent = translations[lang].trading;
       document.getElementById("simulation-tab").textContent = translations[lang].simulation;
-      updateSearchPlaceholder(lang);
+      document.getElementById("search-input").placeholder = translations[lang].search;
+      
+      // Banner-Text aktualisieren
+      document.getElementById("banner-text").textContent = translations[lang].adMessages[0];
+      
       updateCards(lang);
     }
 
@@ -1406,27 +1647,26 @@
         }
       });
     });
-    
-    // Aktualisiere Suchfeld-Platzhalter bei Sprachänderung
-    function updateSearchPlaceholder(lang) {
-      document.getElementById("search-input").placeholder = translations[lang].search;
-    }
 
     // Initialisierung
-    setLanguage("de");
-    updateCards("de");
-    switchTab("command");
-
-    // Check for dark mode preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.body.classList.add('dark-mode');
-    }
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-      if (event.matches) {
+    document.addEventListener("DOMContentLoaded", function() {
+      setLanguage("de");
+      updateCards("de");
+      switchTab("command");
+      cycleBannerMessages();
+      
+      // Check for dark mode preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         document.body.classList.add('dark-mode');
-      } else {
-        document.body.classList.remove('dark-mode');
       }
+      
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        if (event.matches) {
+          document.body.classList.add('dark-mode');
+        } else {
+          document.body.classList.remove('dark-mode');
+        }
+      });
     });
   </script>
 </body>
