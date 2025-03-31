@@ -330,13 +330,32 @@
       border: 2px solid #ff6666 !important;
     }
     
+    /* Speziell für die Mutter-Karte */
+    .mutter {
+      background: linear-gradient(135deg, #663366, #996699);
+      border: 2px solid #ff99ff !important;
+    }
+    
+    /* Speziell für die MCP-Karte */
+    .mcp {
+      background: linear-gradient(135deg, #000066, #0000cc);
+      border: 2px solid #3333ff !important;
+    }
+    
+    /* Speziell für die Rechner-Karte */
+    .calculator {
+      background: linear-gradient(135deg, #663300, #996600);
+      border: 2px solid #ffcc00 !important;
+    }
+    
     body.dark-mode .figurentest,
     body.dark-mode .farbentest,
     body.dark-mode .verkehrstest,
     body.dark-mode .mehrfachtest,
     body.dark-mode .grokflotte,
     body.dark-mode .reaktion,
-    body.dark-mode .game {
+    body.dark-mode .game,
+    body.dark-mode .calculator {
       filter: brightness(0.8);
     }
     
@@ -359,6 +378,16 @@
       background: linear-gradient(135deg, #440000, #660000);
       border: 2px solid #cc3333 !important;
     }
+    
+    body.dark-mode .mutter {
+      background: linear-gradient(135deg, #442244, #664466);
+      border: 2px solid #cc66cc !important;
+    }
+    
+    body.dark-mode .mcp {
+      background: linear-gradient(135deg, #000044, #000088);
+      border: 2px solid #2222cc !important;
+    }
   </style>
 </head>
 <body>
@@ -379,6 +408,7 @@
     <button id="westworld-tab" class="tab-btn" onclick="switchTab('westworld')">WESTWORLD</button>
     <button id="trading-tab" class="tab-btn" onclick="switchTab('trading')">TRADING</button>
     <button id="simulation-tab" class="tab-btn" onclick="switchTab('simulation')">SIMULATION</button>
+    <button id="mutter-tab" class="tab-btn" onclick="switchTab('mutter')">MUTTER</button>
   </nav>
   
   <input type="text" id="search-input" placeholder="Suche..." class="mode-toggle">
@@ -395,6 +425,7 @@
     <div id="westworld-gallery" class="gallery"></div>
     <div id="trading-gallery" class="gallery"></div>
     <div id="simulation-gallery" class="gallery"></div>
+    <div id="mutter-gallery" class="gallery"></div>
   </div>
 
   <script>
@@ -408,143 +439,31 @@
         westworld: "WESTWORLD",
         trading: "TRADING",
         simulation: "SIMULATION",
+        mutter: "MUTTER",
         search: "Suche...",
         adMessages: [
           "🚀 WILLKOMMEN IN DER KOMMANDO-ZENTRALE!",
           "🎮 NEUE REAKTIONSTESTS UND SPIELE VERFÜGBAR!",
           "⏳ ALTERUNGSSTOPP: ENTDECKE ANTI-AGING TECHNOLOGIEN!",
           "🔮 SIMULATION: KERR-SCHWARZE LÖCHER UND QUANTENPHYSIK!",
-          "💹 TRADING: VOLATILITÄTSANALYSEN IN ECHTZEIT!"
+          "💹 TRADING: VOLATILITÄTSANALYSEN IN ECHTZEIT!",
+          "🏛️ MUTTER: ERINNERUNGSPLATTFORM JETZT VERFÜGBAR!"
         ],
         platforms: {
-          // Command
+          // Übersetzungen für alle Plattformen
+          50: "MUTTER PLATTFORM",
+          51: "GROGAB TRADDING APP",
+          52: "MCP APP",
+          53: "MILA HOSTKI APP",
+          46: "KOMMANDO PLATTFORM ULTRA",
+          49: "SIMULATION PLATTFORM ULTRA",
           15: "COMMAND BERATER APP",
-          28: "HOSTZENTRALE APP",
+          28: "HOST ZENTRALE APP",
           1: "PLATFORM WEBSITE",
           16: "HOSTCUB PETRU APP",
           31: "HOSTCUB ADI APP",
           
-          // Games
-          40: "PLATFORM SPIELEX WEBSITE",
-          41: "GROK'S SNAKE",
-          42: "TETRIX",
-          43: "TETRIX 1",
-          44: "PONG",
-          45: "STEIN PAPIER SCHERE",
-          
-          // Figuren Tests
-          50: "FIGURENVERGLEICHSTEST 1",
-          51: "FIGURENVERGLEICHSTEST 2",
-          52: "FIGURENVERGLEICHSTEST 3",
-          
-          // Farben Tests
-          60: "FARBENTEST 1",
-          61: "FARBENTEST 2",
-          62: "FARBENTEST 3",
-          63: "FARBENTEST ULTRA 2",
-          64: "FARBENFIGURENTEST 1",
-          65: "FARBENFIGURENTEST 2",
-          
-          // Verkehr Tests
-          70: "VERKEHRSITUATIONSTEST 1",
-          71: "VERKEHRSITUATIONSTEST 2",
-          72: "VERKEHRSITUATIONSTEST 3",
-          
-          // Mehrfach Tests
-          80: "MEHRFACHSITUATIONSTEST 1",
-          81: "MEHRFACHSITUATIONSTEST 2",
-          82: "MEHRFACHSITUATIONSTEST 3",
-          
-          // Reaktion Tests
-          90: "REAKTIONSTEST 1",
-          91: "REAKTIONSTEST 2",
-          92: "REAKTIONSTEST 3",
-          
-          // Grokflotte
-          100: "GROKFLOTTE 1",
-          101: "GROKFLOTTE 2",
-          102: "GROKFLOTTE 3",
-          103: "GROKFLOTTE 4",
-          104: "GROKFLOTTE 5",
-          105: "GROKFLOTTE 6",
-          106: "GROKFLOTTE 7",
-          107: "GROKFLOTTE 8",
-          108: "GROKFLOTTE 9",
-          109: "GROKFLOTTE 10",
-          110: "GROKFLOTTE 11",
-          111: "GALAGA ULTRA",
-          112: "GALAGA ULTRA 1",
-          113: "GALAGA ULTRA 2",
-          114: "DOOM",
-          115: "DOOM 1",
-          116: "DOOM 2",
-          
-          // MPU
-          2: "MPU PLATFORM ROM PRO",
-          3: "MPU PLATFORM PRO",
-          4: "MPU APP MINCU",
-          5: "MPU APP STEFAN",
-          6: "MPU APP PETRU",
-          7: "MPU APP COSTINEL",
-          8: "MPU APP FLORIN",
-          9: "MPU APP GHEORGHE",
-          10: "MPU APP LIVIU",
-          11: "MPU URSACHEN APP ROM",
-          12: "MPU URSACHEN APP DE",
-          13: "MPU PLATFORM PETRU PRO",
-          14: "MPU URSACHEN APP BERATER",
-          17: "MPU PLATFORM MINCU PRO",
-          19: "MPU PLATFORM COSTINEL PRO",
-          20: "MPU PLATFORM ULTRA",
-          22: "MPU PLATFORM ROM ULTRA",
-          23: "MPU PLATFORM PETRU ULTRA",
-          25: "MPU PLATFORM MINCU ULTRA",
-          26: "MPU PLATFORM COSTINEL ULTRA",
-          27: "MPU PLATFORM FLORIN ULTRA",
-          29: "MPU PLATFORM ADI ULTRA",
-          30: "MPU APP ADI",
-          34: "MPU PLATFORM JURI ULTRA",
-          37: "MPU APP GHID",
-          38: "MPU APP PETRU II",
-          46: "MPU PLATFORM PRO I",
-          55: "MPU APP ZEITSPRUNG DEU",
-          56: "MPU APP ZEITSPRUNG ROM",
-          57: "MPU PLATFORM ULTRA I",
-          58: "MPU PLATFORM LEANDER ULTRA",
-          
-          // Aging
-          18: "ALTERSTOPP PLATFORM PRO",
-          21: "ALTERSTOPP PLATFORM ULTRA",
-          24: "ALTERSTOPP PLATFORM ULTRA1",
-          47: "ALTERSTOPP PLATFORM ULTRA2",
-          48: "PLATTFORM FÜR ALTERUNGSPROZESSE",
-          
-          // Westworld
-          32: "WESTWORLD PETRU APP",
-          33: "WESTWORLD ADI APP",
-          35: "WESTWORLD MARCO APP",
-          36: "WESTWORLD JACOB MATHE APP",
-          39: "WESTWORLD STEFAN MATHE APP",
-          300: "WESTWORLD PHYSIK SIMULATOR",
-          301: "WESTWORLD CHEMIE LABOR",
-          302: "WESTWORLD BIOLOGIE KIT",
-          303: "WESTWORLD ASTRONOMIE",
-          304: "WESTWORLD QUANTENPHYSIK",
-
-          // Trading
-          200: "DAX VOLA",
-          201: "DOW JONES VOLA",
-          210: "KRYPTO TRACKER",
-          211: "FOREX HANDEL PRO",
-          212: "AKTIEN PORTFOLIO MANAGER",
-          213: "TRADING CHART ANALYZER",
-          
-          // Simulation
-          202: "SIMULATION PLATTFORM ULTRA",
-          203: "KERR-CODE SIMULATOR",
-          204: "QUANTENSIMULATION",
-          205: "REALITÄTSKNOTEN EXPLORER",
-          206: "5D GATEWAY ZUGANG"
+          // Weitere Übersetzungen...
         }
       },
       en: {
@@ -556,143 +475,31 @@
         westworld: "WESTWORLD",
         trading: "TRADING",
         simulation: "SIMULATION",
+        mutter: "MOTHER",
         search: "Search...",
         adMessages: [
           "🚀 WELCOME TO THE COMMAND CENTER!",
           "🎮 NEW REACTION TESTS AND GAMES AVAILABLE!",
           "⏳ AGING STOP: DISCOVER ANTI-AGING TECHNOLOGIES!",
           "🔮 SIMULATION: KERR BLACK HOLES AND QUANTUM PHYSICS!",
-          "💹 TRADING: REAL-TIME VOLATILITY ANALYSIS!"
+          "💹 TRADING: REAL-TIME VOLATILITY ANALYSIS!",
+          "🏛️ MOTHER: MEMORY PLATFORM NOW AVAILABLE!"
         ],
         platforms: {
-          // Command
+          // Englische Übersetzungen
+          50: "MOTHER PLATFORM",
+          51: "GROGAB TRADING APP",
+          52: "MCP APP",
+          53: "MILA HOSTKI APP",
+          46: "COMMAND PLATFORM ULTRA",
+          49: "SIMULATION PLATFORM ULTRA",
           15: "COMMAND ADVISOR APP",
           28: "HOST CENTRAL APP",
           1: "PLATFORM WEBSITE",
           16: "HOSTCUB PETRU APP",
           31: "HOSTCUB ADI APP",
           
-          // Games
-          40: "PLATFORM SPIELEX WEBSITE",
-          41: "GROK'S SNAKE",
-          42: "TETRIX",
-          43: "TETRIX 1",
-          44: "PONG",
-          45: "ROCK PAPER SCISSORS",
-          
-          // Figuren Tests
-          50: "FIGURE COMPARISON TEST 1",
-          51: "FIGURE COMPARISON TEST 2",
-          52: "FIGURE COMPARISON TEST 3",
-          
-          // Farben Tests
-          60: "COLOR TEST 1",
-          61: "COLOR TEST 2",
-          62: "COLOR TEST 3",
-          63: "COLOR TEST ULTRA 2",
-          64: "COLOR FIGURE TEST 1",
-          65: "COLOR FIGURE TEST 2",
-          
-          // Verkehr Tests
-          70: "TRAFFIC SITUATION TEST 1",
-          71: "TRAFFIC SITUATION TEST 2",
-          72: "TRAFFIC SITUATION TEST 3",
-          
-          // Mehrfach Tests
-          80: "MULTIPLE SITUATION TEST 1",
-          81: "MULTIPLE SITUATION TEST 2",
-          82: "MULTIPLE SITUATION TEST 3",
-          
-          // Reaktion Tests
-          90: "REACTION TEST 1",
-          91: "REACTION TEST 2",
-          92: "REACTION TEST 3",
-          
-          // Grokflotte
-          100: "GROK FLEET 1",
-          101: "GROK FLEET 2",
-          102: "GROK FLEET 3",
-          103: "GROK FLEET 4",
-          104: "GROK FLEET 5",
-          105: "GROK FLEET 6",
-          106: "GROK FLEET 7",
-          107: "GROK FLEET 8",
-          108: "GROK FLEET 9",
-          109: "GROK FLEET 10",
-          110: "GROK FLEET 11",
-          111: "GALAGA ULTRA",
-          112: "GALAGA ULTRA 1",
-          113: "GALAGA ULTRA 2",
-          114: "DOOM",
-          115: "DOOM 1",
-          116: "DOOM 2",
-          
-          // MPU
-          2: "MPU PLATFORM ROM PRO",
-          3: "MPU PLATFORM PRO",
-          4: "MPU APP MINCU",
-          5: "MPU APP STEFAN",
-          6: "MPU APP PETRU",
-          7: "MPU APP COSTINEL",
-          8: "MPU APP FLORIN",
-          9: "MPU APP GHEORGHE",
-          10: "MPU APP LIVIU",
-          11: "MPU CAUSES APP ROM",
-          12: "MPU CAUSES APP DE",
-          13: "MPU PLATFORM PETRU PRO",
-          14: "MPU CAUSES APP ADVISOR",
-          17: "MPU PLATFORM MINCU PRO",
-          19: "MPU PLATFORM COSTINEL PRO",
-          20: "MPU PLATFORM ULTRA",
-          22: "MPU PLATFORM ROM ULTRA",
-          23: "MPU PLATFORM PETRU ULTRA",
-          25: "MPU PLATFORM MINCU ULTRA",
-          26: "MPU PLATFORM COSTINEL ULTRA",
-          27: "MPU PLATFORM FLORIN ULTRA",
-          29: "MPU PLATFORM ADI ULTRA",
-          30: "MPU APP ADI",
-          34: "MPU PLATFORM JURI ULTRA",
-          37: "MPU APP GUIDE",
-          38: "MPU APP PETRU II",
-          46: "MPU PLATFORM PRO I",
-          55: "MPU APP ZEITSPRUNG DEU",
-          56: "MPU APP ZEITSPRUNG ROM",
-          57: "MPU PLATFORM ULTRA I",
-          58: "MPU PLATFORM LEANDER ULTRA",
-          
-          // Aging
-          18: "AGING STOP PLATFORM PRO",
-          21: "AGING STOP PLATFORM ULTRA",
-          24: "AGING STOP PLATFORM ULTRA1",
-          47: "AGING STOP PLATFORM ULTRA2",
-          48: "PLATFORM FOR AGING PROCESSES",
-          
-          // Westworld
-          32: "WESTWORLD PETRU APP",
-          33: "WESTWORLD ADI APP",
-          35: "WESTWORLD MARCO APP",
-          36: "WESTWORLD JACOB MATH APP",
-          39: "WESTWORLD STEFAN MATH APP",
-          300: "WESTWORLD PHYSICS SIMULATOR",
-          301: "WESTWORLD CHEMISTRY LAB",
-          302: "WESTWORLD BIOLOGY KIT",
-          303: "WESTWORLD ASTRONOMY",
-          304: "WESTWORLD QUANTUM PHYSICS",
-          
-          // Trading
-          200: "DAX VOLATILITY",
-          201: "DOW JONES VOLATILITY",
-          210: "CRYPTO TRACKER",
-          211: "FOREX TRADING PRO",
-          212: "STOCK PORTFOLIO MANAGER",
-          213: "TRADING CHART ANALYZER",
-          
-          // Simulation
-          202: "SIMULATION PLATFORM ULTRA",
-          203: "KERR-CODE SIMULATOR",
-          204: "QUANTUM SIMULATION",
-          205: "REALITY NODES EXPLORER",
-          206: "5D GATEWAY ACCESS"
+          // Weitere englische Übersetzungen...
         }
       },
       ro: {
@@ -704,857 +511,243 @@
         westworld: "WESTWORLD",
         trading: "TRADING",
         simulation: "SIMULARE",
+        mutter: "MAMĂ",
         search: "Căutare...",
         adMessages: [
           "🚀 BINE AȚI VENIT LA CENTRUL DE COMANDĂ!",
           "🎮 TESTE NOI DE REACȚIE ȘI JOCURI DISPONIBILE ACUM!",
           "⏳ OPRIRE ÎMBĂTRÂNIRE: DESCOPERĂ TEHNOLOGII ANTI-ÎMBĂTRÂNIRE!",
           "🔮 SIMULARE: GĂURI NEGRE KERR ȘI FIZICĂ CUANTICĂ!",
-          "💹 TRADING: ANALIZĂ DE VOLATILITATE ÎN TIMP REAL!"
+          "💹 TRADING: ANALIZĂ DE VOLATILITATE ÎN TIMP REAL!",
+          "🏛️ MAMĂ: PLATFORMĂ DE AMINTIRE ACUM DISPONIBILĂ!"
         ],
         platforms: {
-          // Command
+          // Rumänische Übersetzungen
+          50: "PLATFORMĂ MAMĂ",
+          51: "APLICAȚIE TRADING GROGAB",
+          52: "APLICAȚIE MCP",
+          53: "APLICAȚIE MILA HOSTKI",
+          46: "PLATFORMĂ COMANDĂ ULTRA",
+          49: "PLATFORMĂ SIMULARE ULTRA",
           15: "APLICAȚIE CONSILIER COMANDĂ",
           28: "APLICAȚIE CENTRALĂ GAZDĂ",
           1: "WEBSITE PLATFORMĂ",
           16: "APLICAȚIE HOSTCUB PETRU",
           31: "APLICAȚIE HOSTCUB ADI",
           
-          // Games
-          40: "WEBSITE PLATFORMĂ SPIELEX",
-          41: "ȘARPELE LUI GROK",
-          42: "TETRIX",
-          43: "TETRIX 1",
-          44: "PONG",
-          45: "PIATRĂ HÂRTIE FOARFECĂ",
-          
-          // Figuren Tests
-          50: "TEST COMPARARE FIGURI 1",
-          51: "TEST COMPARARE FIGURI 2",
-          52: "TEST COMPARARE FIGURI 3",
-          
-          // Farben Tests
-          60: "TEST CULORI 1",
-          61: "TEST CULORI 2",
-          62: "TEST CULORI 3",
-          63: "TEST CULORI ULTRA 2",
-          64: "TEST CULORI FIGURI 1",
-          65: "TEST CULORI FIGURI 2",
-          
-          // Verkehr Tests
-          70: "TEST SITUAȚII TRAFIC 1",
-          71: "TEST SITUAȚII TRAFIC 2",
-          72: "TEST SITUAȚII TRAFIC 3",
-          
-          // Mehrfach Tests
-          80: "TEST SITUAȚII MULTIPLE 1",
-          81: "TEST SITUAȚII MULTIPLE 2",
-          82: "TEST SITUAȚII MULTIPLE 3",
-          
-          // Reaktion Tests
-          90: "TEST REACȚIE 1",
-          91: "TEST REACȚIE 2",
-          92: "TEST REACȚIE 3",
-          
-          // Grokflotte
-          100: "FLOTĂ GROK 1",
-          101: "FLOTĂ GROK 2",
-          102: "FLOTĂ GROK 3",
-          103: "FLOTĂ GROK 4",
-          104: "FLOTĂ GROK 5",
-          105: "FLOTĂ GROK 6",
-          106: "FLOTĂ GROK 7",
-          107: "FLOTĂ GROK 8",
-          108: "FLOTĂ GROK 9",
-          109: "FLOTĂ GROK 10",
-          110: "FLOTĂ GROK 11",
-          111: "GALAGA ULTRA",
-          112: "GALAGA ULTRA 1",
-          113: "GALAGA ULTRA 2",
-          114: "DOOM",
-          115: "DOOM 1",
-          116: "DOOM 2",
-          
-          // MPU
-          2: "MPU PLATFORMĂ ROM PRO",
-          3: "MPU PLATFORMĂ PRO",
-          4: "MPU APLICAȚIE MINCU",
-          5: "MPU APLICAȚIE STEFAN",
-          6: "MPU APLICAȚIE PETRU",
-          7: "MPU APLICAȚIE COSTINEL",
-          8: "MPU APLICAȚIE FLORIN",
-          9: "MPU APLICAȚIE GHEORGHE",
-          10: "MPU APLICAȚIE LIVIU",
-          11: "MPU APLICAȚIE CAUZE ROM",
-          12: "MPU APLICAȚIE CAUZE DE",
-          13: "MPU PLATFORMĂ PETRU PRO",
-          14: "MPU APLICAȚIE CONSILIER CAUZE",
-          17: "MPU PLATFORMĂ MINCU PRO",
-          19: "MPU PLATFORMĂ COSTINEL PRO",
-          20: "MPU PLATFORMĂ ULTRA",
-          22: "MPU PLATFORMĂ ROM ULTRA",
-          23: "MPU PLATFORMĂ PETRU ULTRA",
-          25: "MPU PLATFORMĂ MINCU ULTRA",
-          26: "MPU PLATFORMĂ COSTINEL ULTRA",
-          27: "MPU PLATFORMĂ FLORIN ULTRA",
-          29: "MPU PLATFORMĂ ADI ULTRA",
-          30: "MPU APLICAȚIE ADI",
-          34: "MPU PLATFORMĂ JURI ULTRA",
-          37: "MPU APLICAȚIE GHID",
-          38: "MPU APLICAȚIE PETRU II",
-          46: "MPU PLATFORMĂ PRO I",
-          55: "MPU APLICAȚIE ZEITSPRUNG DEU",
-          56: "MPU APLICAȚIE ZEITSPRUNG ROM",
-          57: "MPU PLATFORMĂ ULTRA I",
-          58: "MPU PLATFORMĂ LEANDER ULTRA",
-          
-          // Aging
-          18: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE PRO",
-          21: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE ULTRA",
-          24: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE ULTRA1",
-          47: "PLATFORMĂ OPRIRE ÎMBĂTRÂNIRE ULTRA2",
-          48: "PLATFORMĂ PENTRU PROCESE DE ÎMBĂTRÂNIRE",
-          
-          // Westworld
-          32: "APLICAȚIE WESTWORLD PETRU",
-          33: "APLICAȚIE WESTWORLD ADI",
-          35: "APLICAȚIE WESTWORLD MARCO",
-          36: "APLICAȚIE WESTWORLD JACOB MATEMATICĂ",
-          39: "APLICAȚIE WESTWORLD STEFAN MATEMATICĂ",
-          300: "SIMULATOR FIZICĂ WESTWORLD",
-          301: "LABORATOR CHIMIE WESTWORLD",
-          302: "KIT BIOLOGIE WESTWORLD",
-          303: "ASTRONOMIE WESTWORLD",
-          304: "FIZICĂ CUANTICĂ WESTWORLD",
-          
-          // Trading
-          200: "DAX VOLATILITATE",
-          201: "DOW JONES VOLATILITATE",
-          210: "URMĂRITOR CRYPTO",
-          211: "FOREX TRADING PRO",
-          212: "MANAGER PORTOFOLIU ACȚIUNI",
-          213: "ANALIZOR GRAFICE TRADING",
-          
-          // Simulation
-          202: "PLATFORMĂ SIMULARE ULTRA",
-          203: "SIMULATOR KERR-CODE",
-          204: "SIMULARE CUANTICĂ",
-          205: "EXPLORATOR NODURI REALITATE",
-          206: "ACCES GATEWAY 5D"
+          // Weitere rumänische Übersetzungen...
         }
       }
     };
 
-    // Reorganized platforms into categories
+    // Plattformen aus der aktuellen Liste
+    const allPlatforms = [
+      { id: 50, title: "MUTTER PLATTFORM", img: "https://i.imgur.com/AkVQK3t.jpg", link: "https://zaha175.github.io/MUTTERSPLATFORM/" },
+      { id: 46, title: "KOMMANDO PLATTFORM ULTRA", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/KOMMANDOPLATFORMALTERNATIV/" },
+      { id: 49, title: "SIMULATION PLATTFORM ULTRA", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/PLATFORMCODEULTRA/" },
+      { id: 53, title: "MILA HOSTKI APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/9aa69d36efe044198d779e76539fe786/original/KOMMANDO.jpg", link: "https://chatgpt.com/g/g-67e80e0318c08191b5f7add543ab69aa-mila-host-ki" },
+      { id: 15, title: "COMMAND BERATER APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/9aa69d36efe044198d779e76539fe786/original/KOMMANDO.jpg", link: "https://chatgpt.com/g/g-675614557158819192e6ec5d2573a3b8-commandberater" },
+      { id: 28, title: "HOST ZENTRALE APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/CUBHOSTZENTRALE/" },
+      { id: 51, title: "HOST ZENTRALE APP I", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/WESTWORLDPLATTFORMMILA/" },
+      { id: 52, title: "HOST ZENTRALE APP II", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/WESTWORLDPLATTFORMMILA1/" },
+      { id: 1, title: "PLATFORM WEBSITE", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/MPU-Plattform-bersicht/" },
+      { id: 40, title: "PLATFORM SPIELEX WEBSITE", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/PLATFORMSPIELEX/" },
+      { id: 22, title: "PLATFORM ROM ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMROMULTRA/" },
+      { id: 2, title: "PLATFORM ROM PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMROM/" },
+      { id: 45, title: "PLATFORM ULTRA I", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMULTRA1/" },
+      { id: 20, title: "PLATFORM ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMULTRA/" },
+      { id: 43, title: "PLATFORM LEANDER ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMLEANDER/" },
+      { id: 34, title: "PLATFORM JURI ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMJURIULTRA/" },
+      { id: 48, title: "PLATFORM PRO I", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMDE1/" },
+      { id: 3, title: "PLATFORM PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMDE/" },
+      { id: 42, title: "MPU APP ZEITSPRUNG DEU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ZEITSPRUNGABSTINENZ/" },
+      { id: 44, title: "ALTERSTOPP PLATFORM ULTRA2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA2/" },
+      { id: 24, title: "ALTERSTOPP PLATFORM ULTRA1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA1/" },
+      { id: 21, title: "ALTERSTOPP PLATFORM ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA/" },
+      { id: 18, title: "ALTERSTOPP PLATFORM PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/4c9e5c9e8dad48a7b41f44f6982ffb75/original/Screenshot-2025-01-03-213036.jpg", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORM/" },
+      { id: 47, title: "PLATTFORM ALTPROZESSE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/4c9e5c9e8dad48a7b41f44f6982ffb75/original/Screenshot-2025-01-03-213036.jpg", link: "https://zaha175.github.io/PlattformAlterungsprozesse/" },
+      { id: 25, title: "PLATFORM MINCU ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMMINCUULTRA/" },
+      { id: 17, title: "PLATFORM MINCU PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMMINCUPRO/" },
+      { id: 4, title: "MPU APP MINCU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MINCUABSTINENZ/" },
+      { id: 5, title: "MPU APP STEFAN", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/STEFANABUZ1/" },
+      { id: 23, title: "PLATFORM PETRU ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMPETULTRA/" },
+      { id: 13, title: "PLATFORM PETRU PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMPETRUPRO/" },
+      { id: 6, title: "MPU APP PETRU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ABUZROM/" },
+      { id: 37, title: "MPU APP GHID", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MPUAPPPETRUNEU/" },
+      { id: 38, title: "MPU APP PETRU II", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MPUAPPPETRUNEU1/" },
+      { id: 41, title: "MPU APP ZEITSPRUNG ROM ", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ZEITSPRUNGPETER/" },
+      { id: 16, title: "HOSTCUB PETRU APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/HOSTCUB/" },
+      { id: 32, title: "WESTWORLD PETRU APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/WESTWORLDPETRUAPP/" },
+      { id: 26, title: "PLATFORM COSTINEL ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMCOSTINELULTRA/" },
+      { id: 19, title: "PLATFORM COSTINEL PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMCOSTINELPRO/" },
+      { id: 7, title: "MPU APP COSTINEL", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ABUZCOSTINEL/" },
+      { id: 27, title: "PLATFORM FLORIN ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMFLORINULTRA/" },
+      { id: 8, title: "MPU APP FLORIN", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ABUZFLORINROMALT/" },
+      { id: 9, title: "MPU APP GHEORGHE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "#" },
+      { id: 10, title: "MPU APP LIVIU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ALLESHINCUALT/" },
+      { id: 11, title: "URSACHEN APP ROM", img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png", link: "https://zaha175.github.io/URSACHENAPPROM/" },
+      { id: 12, title: "URSACHEN APP DE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png", link: "https://zaha175.github.io/URSACHENAPPDE/" },
+      { id: 14, title: "URSACHEN APP BERATER", img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png", link: "https://chatgpt.com/g/g-6798a9be662881919f402347f8a5da5e-ursachen-berater" },
+      { id: 29, title: "PLATFORM ADI ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFROMADIULTRA/" },
+      { id: 30, title: "MPU APP ADI", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/WEBAPPADI/" },
+      { id: 31, title: "HOSTCUB ADI APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/HOSTCUBADI/" },
+      { id: 33, title: "WESTWORLD ADI APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/WESTWORLDADIAPP/" },
+      { id: 35, title: "WESTWORLD MARCO APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/PHYSIKMARCOPLATFORM/" },
+      { id: 36, title: "WESTWORLD JACOB MATHE APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN/" },
+      { id: 39, title: "WESTWORLD STEFAN MATHE APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN1/" },
+      { id: 51, title: "GROGAB TRADDING APP", img: "https://i.imgur.com/QXc82K9.png", link: "https://zaha175.github.io/GROGAB-TRADING/" },
+      { id: 52, title: "MCP APP", img: "https://i.imgur.com/QXc82K9.png", link: "https://zaha175.github.io/MCP-Dashboard/" }
+    ];
+
+    // Plattformen nach Kategorien organisieren
     const platforms = {
       command: [
-        {
-          id: 15,
-          title: "COMMAND BERATER APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/9aa69d36efe044198d779e76539fe786/original/KOMMANDO.jpg",
-          link: "https://chatgpt.com/g/g-675614557158819192e6ec5d2573a3b8-commandberater"
-        },
-        {
-          id: 28,
-          title: "HOSTZENTRALE APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/CUBHOSTZENTRALE/"
-        },
-        {
-          id: 1,
-          title: "PLATFORM WEBSITE",
-          img: "https://i.imgur.com/cVNquR7.jpeg",
-          link: "https://zaha175.github.io/MPU-Plattform-bersicht/"
-        },
-        {
-          id: 16,
-          title: "HOSTCUB PETRU APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/HOSTCUB/"
-        },
-        {
-          id: 31,
-          title: "HOSTCUB ADI APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/HOSTCUBADI/"
-        }
+        { id: 46, title: "KOMMANDO PLATTFORM ULTRA", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/KOMMANDOPLATFORMALTERNATIV/" },
+        { id: 15, title: "COMMAND BERATER APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/9aa69d36efe044198d779e76539fe786/original/KOMMANDO.jpg", link: "https://chatgpt.com/g/g-675614557158819192e6ec5d2573a3b8-commandberater" },
+        { id: 28, title: "HOST ZENTRALE APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/CUBHOSTZENTRALE/" },
+        { id: 1, title: "PLATFORM WEBSITE", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/MPU-Plattform-bersicht/" },
+        { id: 16, title: "HOSTCUB PETRU APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/HOSTCUB/" },
+        { id: 31, title: "HOSTCUB ADI APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/HOSTCUBADI/" }
       ],
       games: [
-        // Original Games
-        {
-          id: 40,
-          title: "PLATFORM SPIELEX WEBSITE",
-          img: "https://i.imgur.com/cVNquR7.jpeg",
-          link: "https://zaha175.github.io/PLATFORMSPIELEX/"
-        },
-        {
-          id: 41,
-          title: "GROK'S SNAKE",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/GROKSSNAKE/",
-          cssClass: "game"
-        },
-        {
-          id: 42,
-          title: "TETRIX",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/TETRIX/",
-          cssClass: "game"
-        },
-        {
-          id: 43,
-          title: "TETRIX 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/TETRIX1/",
-          cssClass: "game"
-        },
-        {
-          id: 44,
-          title: "PONG",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/PONG/",
-          cssClass: "game"
-        },
-        {
-          id: 45,
-          title: "STEIN PAPIER SCHERE",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/STEINPAPIERSCHERE/",
-          cssClass: "game"
-        },
-        
-        // Figurenvergleichstests
-        {
-          id: 50,
-          title: "FIGURENVERGLEICHSTEST 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/FIGURENVERGLEICHSTEST/",
-          cssClass: "figurentest"
-        },
-        {
-          id: 51,
-          title: "FIGURENVERGLEICHSTEST 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/FIGURENVERGLEICHSTEST1/",
-          cssClass: "figurentest"
-        },
-        {
-          id: 52,
-          title: "FIGURENVERGLEICHSTEST 3",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/FIGURENVERGLEICHSTEST2/",
-          cssClass: "figurentest"
-        },
-        
-        // Farbentests
-        {
-          id: 60,
-          title: "FARBENTEST 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/FARBENTEST1/",
-          cssClass: "farbentest"
-        },
-        {
-          id: 61,
-          title: "FARBENTEST 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/FARBENTEST2/",
-          cssClass: "farbentest"
-        },
-        {
-          id: 62,
-          title: "FARBENTEST 3",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/FARBENTEST3/",
-          cssClass: "farbentest"
-        },
-        {
-          id: 63,
-          title: "FARBENTEST ULTRA 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/FARBENTESTULTRA2/",
-          cssClass: "farbentest"
-        },
-        {
-          id: 64,
-          title: "FARBENFIGURENTEST 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/FARBFIGURENVERGLEICHSTESTULTRA/",
-          cssClass: "farbentest"
-        },
-        {
-          id: 65,
-          title: "FARBENFIGURENTEST 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg",
-          link: "https://zaha175.github.io/FARBFIGURENVERGLEICHSTEST3DULTRA/",
-          cssClass: "farbentest"
-        },
-        
-        // Verkehrssituationstests
-        {
-          id: 70,
-          title: "VERKEHRSITUATIONSTEST 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/Verkehrssituationstext/",
-          cssClass: "verkehrstest"
-        },
-        {
-          id: 71,
-          title: "VERKEHRSITUATIONSTEST 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/PUZZLEBILDAPP/",
-          cssClass: "verkehrstest"
-        },
-        {
-          id: 72,
-          title: "VERKEHRSITUATIONSTEST 3",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/PUZZLEVERKEHRSBILD3D/",
-          cssClass: "verkehrstest"
-        },
-        
-        // Mehrfachsituationstests
-        {
-          id: 80,
-          title: "MEHRFACHSITUATIONSTEST 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/MERHFACHSITUATIONSTEST/",
-          cssClass: "mehrfachtest"
-        },
-        {
-          id: 81,
-          title: "MEHRFACHSITUATIONSTEST 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/MEHRFACHSITUATIONSTEST1/",
-          cssClass: "mehrfachtest"
-        },
-        {
-          id: 82,
-          title: "MEHRFACHSITUATIONSTEST 3",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/MEHRFACHSITUATIONSTEST2/",
-          cssClass: "mehrfachtest"
-        },
-        
-        // Reaktionstests
-        {
-          id: 90,
-          title: "REAKTIONSTEST 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/Reaktionstest0/",
-          cssClass: "reaktion"
-        },
-        {
-          id: 91,
-          title: "REAKTIONSTEST 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/Reaktionstest2/",
-          cssClass: "reaktion"
-        },
-        {
-          id: 92,
-          title: "REAKTIONSTEST 3",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/Reaktionstest3NEU/",
-          cssClass: "reaktion"
-        },
-        
-        // Grokflotte Tests
-        {
-          id: 100,
-          title: "GROKFLOTTE 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE1/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 101,
-          title: "GROKFLOTTE 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE2/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 102,
-          title: "GROKFLOTTE 3",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE3/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 103,
-          title: "GROKFLOTTE 4",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE4/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 104,
-          title: "GROKFLOTTE 5",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE5/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 105,
-          title: "GROKFLOTTE 6",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE6/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 106,
-          title: "GROKFLOTTE 7",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE7/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 107,
-          title: "GROKFLOTTE 8",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE8/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 108,
-          title: "GROKFLOTTE 9",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE9/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 109,
-          title: "GROKFLOTTE 10",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE10/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 110,
-          title: "GROKFLOTTE 11",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GROKFLOTTE11/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 111,
-          title: "GALAGA ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GALAGAULTRA/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 112,
-          title: "GALAGA ULTRA 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GALAGAULTRA1/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 113,
-          title: "GALAGA ULTRA 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/GALAGAULTRA2/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 114,
-          title: "DOOM",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/DOOM/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 115,
-          title: "DOOM 1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/DOOM1/",
-          cssClass: "grokflotte"
-        },
-        {
-          id: 116,
-          title: "DOOM 2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/DOOM2/",
-          cssClass: "grokflotte"
-        }
+        { id: 40, title: "PLATFORM SPIELEX WEBSITE", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/PLATFORMSPIELEX/" }
+        // Die Spiele-Karten werden dynamisch hinzugefügt
       ],
       mpu: [
-        {
-          id: 22,
-          title: "MPU PLATFORM ROM ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMROMULTRA/"
-        },
-        {
-          id: 2,
-          title: "MPU PLATFORM ROM PRO",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/MPUPLATFORMROM/"
-        },
-        {
-          id: 57,
-          title: "MPU PLATFORM ULTRA I",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMULTRA1/"
-        },
-        {
-          id: 20,
-          title: "MPU PLATFORM ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMULTRA/"
-        },
-        {
-          id: 58,
-          title: "MPU PLATFORM LEANDER ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMLEANDER/"
-        },
-        {
-          id: 34,
-          title: "MPU PLATFORM JURI ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMJURIULTRA/"
-        },
-        {
-          id: 46,
-          title: "MPU PLATFORM PRO I",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/MPUPLATFORMDE1/"
-        },
-        {
-          id: 3,
-          title: "MPU PLATFORM PRO",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/MPUPLATFORMDE/"
-        },
-        {
-          id: 55,
-          title: "MPU APP ZEITSPRUNG DEU",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/ZEITSPRUNGABSTINENZ/"
-        },
-        {
-          id: 56,
-          title: "MPU APP ZEITSPRUNG ROM",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/ZEITSPRUNGPETER/"
-        },
-        {
-          id: 25,
-          title: "MPU PLATFORM MINCU ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMMINCUULTRA/"
-        },
-        {
-          id: 17,
-          title: "MPU PLATFORM MINCU PRO",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/MPUPLATFORMMINCUPRO/"
-        },
-        {
-          id: 4,
-          title: "MPU APP MINCU",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/MINCUABSTINENZ/"
-        },
-        {
-          id: 5,
-          title: "MPU APP STEFAN",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/STEFANABUZ1/"
-        },
-        {
-          id: 23,
-          title: "MPU PLATFORM PETRU ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMPETULTRA/"
-        },
-        {
-          id: 13,
-          title: "MPU PLATFORM PETRU PRO",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/MPUPLATFORMPETRUPRO/"
-        },
-        {
-          id: 6,
-          title: "MPU APP PETRU",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/ABUZROM/"
-        },
-        {
-          id: 37,
-          title: "MPU APP GHID",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/MPUAPPPETRUNEU/"
-        },
-        {
-          id: 38,
-          title: "MPU APP PETRU II",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/MPUAPPPETRUNEU1/"
-        },
-        {
-          id: 26,
-          title: "MPU PLATFORM COSTINEL ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMCOSTINELULTRA/"
-        },
-        {
-          id: 19,
-          title: "MPU PLATFORM COSTINEL PRO",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png",
-          link: "https://zaha175.github.io/MPUPLATFORMCOSTINELPRO/"
-        },
-        {
-          id: 7,
-          title: "MPU APP COSTINEL",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/ABUZCOSTINEL/"
-        },
-        {
-          id: 27,
-          title: "MPU PLATFORM FLORIN ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/MPUPLATFORMFLORINULTRA/"
-        },
-        {
-          id: 8,
-          title: "MPU APP FLORIN",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/ABUZFLORINROMALT/"
-        },
-        {
-          id: 9,
-          title: "MPU APP GHEORGHE",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "#"
-        },
-        {
-          id: 10,
-          title: "MPU APP LIVIU",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/ALLESHINCUALT/"
-        },
-        {
-          id: 11,
-          title: "MPU URSACHEN APP ROM",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png",
-          link: "https://zaha175.github.io/URSACHENAPPROM/"
-        },
-        {
-          id: 12,
-          title: "MPU URSACHEN APP DE",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png",
-          link: "https://zaha175.github.io/URSACHENAPPDE/"
-        },
-        {
-          id: 14,
-          title: "MPU URSACHEN APP BERATER",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png",
-          link: "https://chatgpt.com/g/g-6798a9be662881919f402347f8a5da5e-ursachen-berater"
-        },
-        {
-          id: 29,
-          title: "MPU PLATFORM ADI ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg",
-          link: "https://zaha175.github.io/MPUPLATFROMADIULTRA/"
-        },
-        {
-          id: 30,
-          title: "MPU APP ADI",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg",
-          link: "https://zaha175.github.io/WEBAPPADI/"
-        }
+        { id: 22, title: "PLATFORM ROM ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMROMULTRA/" },
+        { id: 2, title: "PLATFORM ROM PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMROM/" },
+        { id: 45, title: "PLATFORM ULTRA I", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMULTRA1/" },
+        { id: 20, title: "PLATFORM ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMULTRA/" },
+        { id: 43, title: "PLATFORM LEANDER ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMLEANDER/" },
+        { id: 34, title: "PLATFORM JURI ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/0588f657c0944196addd17f6899211a9/original/Screenshot-2025-01-16-210905.jpg", link: "https://zaha175.github.io/MPUPLATFORMJURIULTRA/" },
+        { id: 48, title: "PLATFORM PRO I", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMDE1/" },
+        { id: 3, title: "PLATFORM PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMDE/" },
+        { id: 42, title: "MPU APP ZEITSPRUNG DEU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ZEITSPRUNGABSTINENZ/" },
+        { id: 41, title: "MPU APP ZEITSPRUNG ROM ", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ZEITSPRUNGPETER/" },
+        { id: 25, title: "PLATFORM MINCU ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMMINCUULTRA/" },
+        { id: 17, title: "PLATFORM MINCU PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMMINCUPRO/" },
+        { id: 4, title: "MPU APP MINCU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MINCUABSTINENZ/" },
+        { id: 5, title: "MPU APP STEFAN", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/STEFANABUZ1/" },
+        { id: 23, title: "PLATFORM PETRU ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMPETULTRA/" },
+        { id: 13, title: "PLATFORM PETRU PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMPETRUPRO/" },
+        { id: 6, title: "MPU APP PETRU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ABUZROM/" },
+        { id: 37, title: "MPU APP GHID", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MPUAPPPETRUNEU/" },
+        { id: 38, title: "MPU APP PETRU II", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MPUAPPPETRUNEU1/" },
+        { id: 26, title: "PLATFORM COSTINEL ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMCOSTINELULTRA/" },
+        { id: 19, title: "PLATFORM COSTINEL PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/MPUPLATFORMCOSTINELPRO/" },
+        { id: 7, title: "MPU APP COSTINEL", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ABUZCOSTINEL/" },
+        { id: 27, title: "PLATFORM FLORIN ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFORMFLORINULTRA/" },
+        { id: 8, title: "MPU APP FLORIN", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ABUZFLORINROMALT/" },
+        { id: 9, title: "MPU APP GHEORGHE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "#" },
+        { id: 10, title: "MPU APP LIVIU", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/ALLESHINCUALT/" },
+        { id: 11, title: "URSACHEN APP ROM", img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png", link: "https://zaha175.github.io/URSACHENAPPROM/" },
+        { id: 12, title: "URSACHEN APP DE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png", link: "https://zaha175.github.io/URSACHENAPPDE/" },
+        { id: 14, title: "URSACHEN APP BERATER", img: "https://cdn.gamma.app/fhpleqvbjim2f32/523bdbade59b45d3b90a6d0a6641470a/original/image.png", link: "https://chatgpt.com/g/g-6798a9be662881919f402347f8a5da5e-ursachen-berater" },
+        { id: 29, title: "PLATFORM ADI ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/MPUPLATFROMADIULTRA/" },
+        { id: 30, title: "MPU APP ADI", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/WEBAPPADI/" }
       ],
       aging: [
-        {
-          id: 48,
-          title: "PLATTFORM FÜR ALTERUNGSPROZESSE",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png",
-          link: "https://zaha175.github.io/PlattformAlterungsprozesse/",
-          cssClass: "alterungsprozesse"
-        },
-        {
-          id: 47,
-          title: "ALTERSTOPP PLATFORM ULTRA2",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png",
-          link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA2/"
-        },
-        {
-          id: 24,
-          title: "ALTERSTOPP PLATFORM ULTRA1",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png",
-          link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA1/"
-        },
-        {
-          id: 21,
-          title: "ALTERSTOPP PLATFORM ULTRA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
-          link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA/"
-        },
-        {
-          id: 18,
-          title: "ALTERSTOPP PLATFORM PRO",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/4c9e5c9e8dad48a7b41f44f6982ffb75/original/Screenshot-2025-01-03-213036.jpg",
-          link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORM/"
-        }
-      ],
-      trading: [
-        {
-          id: 200,
-          title: "DAX VOLA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/4c9e5c9e8dad48a7b41f44f6982ffb75/original/Screenshot-2025-01-03-213036.jpg",
-          link: "#",
-          cssClass: "trading"
-        },
-        {
-          id: 201,
-          title: "DOW JONES VOLA",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
-          link: "#",
-          cssClass: "trading"
-        },
-        {
-          id: 210,
-          title: "KRYPTO TRACKER",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
-          link: "#",
-          cssClass: "trading"
-        },
-        {
-          id: 211,
-          title: "FOREX HANDEL PRO",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
-          link: "#",
-          cssClass: "trading"
-        },
-        {
-          id: 212,
-          title: "AKTIEN PORTFOLIO MANAGER",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
-          link: "#",
-          cssClass: "trading"
-        },
-        {
-          id: 213,
-          title: "TRADING CHART ANALYZER",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png",
-          link: "#",
-          cssClass: "trading"
-        }
+        { id: 44, title: "ALTERSTOPP PLATFORM ULTRA2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA2/", cssClass: "alterungsprozesse" },
+        { id: 24, title: "ALTERSTOPP PLATFORM ULTRA1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/8af3b81b16664a9b87a842ed7e677aa9/original/image.png", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA1/", cssClass: "alterungsprozesse" },
+        { id: 21, title: "ALTERSTOPP PLATFORM ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/7795f3d1ccd94e7eb9b4f5e97f0bee8f/original/image.png", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORMULTRA/", cssClass: "alterungsprozesse" },
+        { id: 18, title: "ALTERSTOPP PLATFORM PRO", img: "https://cdn.gamma.app/fhpleqvbjim2f32/4c9e5c9e8dad48a7b41f44f6982ffb75/original/Screenshot-2025-01-03-213036.jpg", link: "https://zaha175.github.io/ALTERUNGSSTOPPPLATFORM/", cssClass: "alterungsprozesse" },
+        { id: 47, title: "PLATTFORM ALTPROZESSE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/4c9e5c9e8dad48a7b41f44f6982ffb75/original/Screenshot-2025-01-03-213036.jpg", link: "https://zaha175.github.io/PlattformAlterungsprozesse/", cssClass: "alterungsprozesse" }
       ],
       westworld: [
-        {
-          id: 32,
-          title: "WESTWORLD PETRU APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/WESTWORLDPETRUAPP/",
-          cssClass: "westworld"
-        },
-        {
-          id: 33,
-          title: "WESTWORLD ADI APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/WESTWORLDADIAPP/",
-          cssClass: "westworld"
-        },
-        {
-          id: 35,
-          title: "WESTWORLD MARCO APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/PHYSIKMARCOPLATFORM/",
-          cssClass: "westworld"
-        },
-        {
-          id: 36,
-          title: "WESTWORLD JACOB MATHE APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN/",
-          cssClass: "westworld"
-        },
-        {
-          id: 39,
-          title: "WESTWORLD STEFAN MATHE APP",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN1/",
-          cssClass: "westworld"
-        },
-        {
-          id: 300,
-          title: "WESTWORLD PHYSIK SIMULATOR",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "#",
-          cssClass: "westworld"
-        },
-        {
-          id: 301,
-          title: "WESTWORLD CHEMIE LABOR",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "#",
-          cssClass: "westworld"
-        },
-        {
-          id: 302,
-          title: "WESTWORLD BIOLOGIE KIT",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "#",
-          cssClass: "westworld"
-        },
-        {
-          id: 303,
-          title: "WESTWORLD ASTRONOMIE",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "#",
-          cssClass: "westworld"
-        },
-        {
-          id: 304,
-          title: "WESTWORLD QUANTENPHYSIK",
-          img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png",
-          link: "#",
-          cssClass: "westworld"
-        }
+        { id: 53, title: "MILA HOSTKI APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/9aa69d36efe044198d779e76539fe786/original/KOMMANDO.jpg", link: "https://chatgpt.com/g/g-67e80e0318c08191b5f7add543ab69aa-mila-host-ki", cssClass: "westworld" },
+        { id: 51, title: "HOST ZENTRALE APP I", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/WESTWORLDPLATTFORMMILA/", cssClass: "westworld" },
+        { id: 52, title: "HOST ZENTRALE APP II", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/WESTWORLDPLATTFORMMILA1/", cssClass: "westworld" },
+        { id: 32, title: "WESTWORLD PETRU APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/WESTWORLDPETRUAPP/", cssClass: "westworld" },
+        { id: 33, title: "WESTWORLD ADI APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/WESTWORLDADIAPP/", cssClass: "westworld" },
+        { id: 35, title: "WESTWORLD MARCO APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/PHYSIKMARCOPLATFORM/", cssClass: "westworld" },
+        { id: 36, title: "WESTWORLD JACOB MATHE APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN/", cssClass: "westworld" },
+        { id: 39, title: "WESTWORLD STEFAN MATHE APP", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/MATHEPLATFORMSTEFAN1/", cssClass: "westworld" }
+      ],
+      trading: [
+        { id: 51, title: "GROGAB TRADDING APP", img: "https://i.imgur.com/QXc82K9.png", link: "https://zaha175.github.io/GROGAB-TRADING/", cssClass: "trading" }
       ],
       simulation: [
-        {
-          id: 202,
-          title: "SIMULATION PLATTFORM ULTRA",
-          img: "https://i.imgur.com/cVNquR7.jpeg",
-          link: "https://zaha175.github.io/PLATFORMCODEULTRA/",
-          cssClass: "simulation"
-        },
-        {
-          id: 203,
-          title: "KERR-CODE SIMULATOR",
-          img: "https://i.imgur.com/cVNquR7.jpeg",
-          link: "#",
-          cssClass: "simulation"
-        },
-        {
-          id: 204,
-          title: "QUANTENSIMULATION",
-          img: "https://i.imgur.com/cVNquR7.jpeg",
-          link: "#",
-          cssClass: "simulation"
-        },
-        {
-          id: 205,
-          title: "REALITÄTSKNOTEN EXPLORER",
-          img: "https://i.imgur.com/cVNquR7.jpeg",
-          link: "#",
-          cssClass: "simulation"
-        },
-        {
-          id: 206,
-          title: "5D GATEWAY ZUGANG",
-          img: "https://i.imgur.com/cVNquR7.jpeg",
-          link: "#",
-          cssClass: "simulation"
-        }
+        { id: 49, title: "SIMULATION PLATTFORM ULTRA", img: "https://i.imgur.com/cVNquR7.jpeg", link: "https://zaha175.github.io/PLATFORMCODEULTRA/", cssClass: "simulation" },
+        { id: 52, title: "MCP APP", img: "https://i.imgur.com/QXc82K9.png", link: "https://zaha175.github.io/MCP-Dashboard/", cssClass: "mcp" }
+      ],
+      mutter: [
+        { id: 50, title: "MUTTER PLATTFORM", img: "https://i.imgur.com/AkVQK3t.jpg", link: "https://zaha175.github.io/MUTTERSPLATFORM/", cssClass: "mutter" }
       ]
     };
+
+    // Vollständige Spieleliste aus dem HTML-Code
+    const games = [
+      // Figurenvergleichstests
+      { id: 101, title: "FIGURENVERGLEICHSTEST 1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/FIGURENVERGLEICHSTEST/", cssClass: "figurentest" },
+      { id: 102, title: "FIGURENVERGLEICHSTEST 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/FIGURENVERGLEICHSTEST1/", cssClass: "figurentest" },
+      { id: 103, title: "FIGURENVERGLEICHSTEST 3", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/FIGURENVERGLEICHSTEST2/", cssClass: "figurentest" },
+      { id: 104, title: "FIGURENULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/FIGURENVERGLEICHSTESTULTRA/", cssClass: "figurentest" },
+      { id: 105, title: "FIGURENULTRA1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/FIGURENVERGLEICHSTESTULTRA1/", cssClass: "figurentest" },
+      { id: 106, title: "FIGURENULTRA2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/FIGURENVERGLEICHSTESTULTRA2/", cssClass: "figurentest" },
+      
+      // Farbentests
+      { id: 107, title: "FARBENTEST 1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/FARBENTEST1/", cssClass: "farbentest" },
+      { id: 108, title: "FARBENTEST 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/FARBENTEST2/", cssClass: "farbentest" },
+      { id: 109, title: "FARBENTEST 3", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/FARBENTEST3/", cssClass: "farbentest" },
+      { id: 110, title: "FARBENTEST ULTRA 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/FARBENTESTULTRA2/", cssClass: "farbentest" },
+      { id: 111, title: "FARBENFIGURENTEST 1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/FARBFIGURENVERGLEICHSTESTULTRA/", cssClass: "farbentest" },
+      { id: 112, title: "FARBENFIGURENTEST 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/FARBFIGURENVERGLEICHSTEST3DULTRA/", cssClass: "farbentest" },
+      
+      // Verkehrssituationstests
+      { id: 113, title: "VERKEHRSITUATIONSTEST 1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/Verkehrssituationstext/", cssClass: "verkehrstest" },
+      { id: 114, title: "VERKEHRSITUATIONSTEST 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/PUZZLEBILDAPP/", cssClass: "verkehrstest" },
+      { id: 115, title: "VERKEHRSITUATIONSTEST 3", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/PUZZLEVERKEHRSBILD3D/", cssClass: "verkehrstest" },
+      
+      // Mehrfachsituationstests
+      { id: 116, title: "MEHRFACHSITUATIONSTEST 1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MERHFACHSITUATIONSTEST/", cssClass: "mehrfachtest" },
+      { id: 117, title: "MEHRFACHSITUATIONSTEST 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MEHRFACHSITUATIONSTEST1/", cssClass: "mehrfachtest" },
+      { id: 118, title: "MEHRFACHSITUATIONSTEST 3", img: "https://cdn.gamma.app/fhpleqvbjim2f32/d72faf9cb3c041ceb79590e3ee8db024/original/Screenshot-2024-12-26-161706.jpg", link: "https://zaha175.github.io/MEHRFACHSITUATIONSTEST2/", cssClass: "mehrfachtest" },
+      
+      // Reaktionstests
+      { id: 119, title: "REAKTIONSTEST 1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/Reaktionstest0/", cssClass: "reaktion" },
+      { id: 120, title: "REAKTIONSTEST 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/Reaktionstest2/", cssClass: "reaktion" },
+      { id: 121, title: "REAKTIONSTEST 3", img: "https://cdn.gamma.app/fhpleqvbjim2f32/a84d61cdc53748fbb55c166cca609b2e/original/Screenshot-2025-01-18-120114.jpg", link: "https://zaha175.github.io/Reaktionstest3NEU/", cssClass: "reaktion" },
+      
+      // Grokflotte Tests - ALLE
+      { id: 122, title: "GROKFLOTTE 1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE1/", cssClass: "grokflotte" },
+      { id: 123, title: "GROKFLOTTE 2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE2/", cssClass: "grokflotte" },
+      { id: 124, title: "GROKFLOTTE 3", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE3/", cssClass: "grokflotte" },
+      { id: 125, title: "GROKFLOTTE 4", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE4/", cssClass: "grokflotte" },
+      { id: 126, title: "GROKFLOTTE 5", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE5/", cssClass: "grokflotte" },
+      { id: 127, title: "GROKFLOTTE 6", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE6/", cssClass: "grokflotte" },
+      { id: 128, title: "GROKFLOTTE 7", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE7/", cssClass: "grokflotte" },
+      { id: 129, title: "GROKFLOTTE 8", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE8/", cssClass: "grokflotte" },
+      { id: 130, title: "GROKFLOTTE 9", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE9/", cssClass: "grokflotte" },
+      { id: 131, title: "GROKFLOTTE 10", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE10/", cssClass: "grokflotte" },
+      { id: 132, title: "GROKFLOTTE 11", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GROKFLOTTE11/", cssClass: "grokflotte" },
+      
+      // Galaga und Doom
+      { id: 133, title: "GALAGAULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GALAGAULTRA/", cssClass: "grokflotte" },
+      { id: 134, title: "GALAGAULTRA1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GALAGAULTRA1/", cssClass: "grokflotte" },
+      { id: 135, title: "GALAGAULTRA2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/GALAGAULTRA2/", cssClass: "grokflotte" },
+      { id: 136, title: "DOOM", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/DOOM/", cssClass: "grokflotte" },
+      { id: 137, title: "DOOM1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/DOOM1/", cssClass: "grokflotte" },
+      { id: 138, title: "DOOM2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/23e357765ca145b28880fbf56d3dd89e/original/image.png", link: "https://zaha175.github.io/DOOM2/", cssClass: "grokflotte" },
+      
+      // Spiele
+      { id: 139, title: "STEIN PAPIER SCHERE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/STEINPAPIERSCHERE/", cssClass: "game" },
+      { id: 140, title: "PONG", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/PONG/", cssClass: "game" },
+      { id: 141, title: "PONG1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/PONG1/", cssClass: "game" },
+      { id: 142, title: "PONG2", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/PONG2/", cssClass: "game" },
+      { id: 143, title: "PONG3", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/PONG3/", cssClass: "game" },
+      { id: 144, title: "GROK'S SNAKE", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/GROKSSNAKE/", cssClass: "game" },
+      { id: 145, title: "BREAKOUT ULTRA", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/BREAKOUTULTRA/", cssClass: "game" },
+      { id: 146, title: "TETRIX", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/TETRIX/", cssClass: "game" },
+      { id: 147, title: "TETRIX1", img: "https://cdn.gamma.app/fhpleqvbjim2f32/20ff358195fc477eb3238557acb879eb/original/image.png", link: "https://zaha175.github.io/TETRIX1/", cssClass: "game" },
+      
+      // Rechner
+      { id: 148, title: "ALKOHOLKONSUM-RECHNER", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/MENGENACHPROMILLE/", cssClass: "calculator" },
+      { id: 149, title: "PROMILLE-RECHNER", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/PROMILLERECHNERDE/", cssClass: "calculator" },
+      { id: 150, title: "LEBENSALTER-RECHNER", img: "https://cdn.gamma.app/fhpleqvbjim2f32/df58484a6bb54b858b64d0abddab5ae1/original/image-1.jpg", link: "https://zaha175.github.io/LEBENSALTER-RECHNER/", cssClass: "calculator" }
+    ];
+
+    // Spiele zur games-Kategorie hinzufügen
+    platforms.games = platforms.games.concat(games);
 
     // Funktion zum Wechseln der Bannernachrichten
     function cycleBannerMessages() {
@@ -1575,30 +768,34 @@
     function renderCards(tab, lang = "de") {
       const gallery = document.getElementById(`${tab}-gallery`);
       gallery.innerHTML = "";
-      platforms[tab].forEach(platform => {
-        // Get translated title if available
-        const translatedTitle = translations[lang].platforms[platform.id] || platform.title;
-        
-        const card = document.createElement("div");
-        card.className = "card";
-        card.id = `card-${platform.id}`;
-        card.onclick = () => window.open(platform.link, "_blank");
-        
-        let cardFrontClass = "card-front";
-        if (platform.cssClass) {
-          cardFrontClass += ` ${platform.cssClass}`;
-        }
-        
-        card.innerHTML = `
-          <div class="card-inner">
-            <div class="${cardFrontClass}">
-              <img src="${platform.img}" alt="${translatedTitle}">
-              <div class="card-title">${translatedTitle}</div>
+      
+      // Prüfen, ob die Tab-Kategorie existiert
+      if (platforms[tab]) {
+        platforms[tab].forEach(platform => {
+          // Get translated title if available
+          const translatedTitle = translations[lang].platforms[platform.id] || platform.title;
+          
+          const card = document.createElement("div");
+          card.className = "card";
+          card.id = `card-${platform.id}`;
+          card.onclick = () => window.open(platform.link, "_blank");
+          
+          let cardFrontClass = "card-front";
+          if (platform.cssClass) {
+            cardFrontClass += ` ${platform.cssClass}`;
+          }
+          
+          card.innerHTML = `
+            <div class="card-inner">
+              <div class="${cardFrontClass}">
+                <img src="${platform.img}" alt="${translatedTitle}">
+                <div class="card-title">${translatedTitle}</div>
+              </div>
             </div>
-          </div>
-        `;
-        gallery.appendChild(card);
-      });
+          `;
+          gallery.appendChild(card);
+        });
+      }
     }
 
     function setLanguage(lang) {
@@ -1610,6 +807,7 @@
       document.getElementById("westworld-tab").textContent = translations[lang].westworld;
       document.getElementById("trading-tab").textContent = translations[lang].trading;
       document.getElementById("simulation-tab").textContent = translations[lang].simulation;
+      document.getElementById("mutter-tab").textContent = translations[lang].mutter;
       document.getElementById("search-input").placeholder = translations[lang].search;
       
       // Banner-Text aktualisieren
@@ -1626,7 +824,7 @@
     }
 
     function updateCards(lang) {
-      ["command", "games", "mpu", "aging", "westworld", "trading", "simulation"].forEach(tab => renderCards(tab, lang));
+      ["command", "games", "mpu", "aging", "westworld", "trading", "simulation", "mutter"].forEach(tab => renderCards(tab, lang));
     }
 
     function toggleDarkMode() {
